@@ -1,0 +1,15 @@
+[package]
+name = "volume_ctl"
+version = "0.1.0"
+authors = ["Dmitriy Kholkin <alukard.develop@gmail.com>"]
+edition = "2018"
+
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
+panic = 'abort'
+
+[target.'cfg(windows)'.dependencies]
+anyhow = "1.0.38"
+winapi = { version = "0.3", features = [ "combaseapi", "endpointvolume", "mmdeviceapi", "objbase", "winerror", "winnt", "wtypesbase" ] }
